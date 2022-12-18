@@ -16,8 +16,30 @@ namespace ProiectMediiMAUI.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<SalonList>().Wait();
+            _database.CreateTableAsync<Service>().Wait();
+            _database.CreateTableAsync<ListService>().Wait();
         }
-        public Task<List<SalonList>> GetSalonListsAsync()
+        public Task<int> SaveServiceAsync(Service service)
+        {
+            if (service.ID != 0)
+            {
+                return _database.UpdateAsync(service);
+            }
+            else
+            {
+                return _database.InsertAsync(service);
+            }
+        }
+        public Task<int> DeleteServiceAsync(Service service)
+        {
+            return _database.DeleteAsync(service);
+        }
+        public Task<List<Service>> GetServicesAsync()
+        {
+            return _database.Table<Service>().ToListAsync();
+        }
+    
+    public Task<List<SalonList>> GetSalonListsAsync()
         {
             return _database.Table<SalonList>().ToListAsync();
         }
@@ -42,5 +64,26 @@ namespace ProiectMediiMAUI.Data
         {
             return _database.DeleteAsync(slist);
         }
+
+        public Task<int> SaveListServiceAsync(ListService listp)
+        {
+            if (listp.ID != 0)
+            {
+                return _database.UpdateAsync(listp);
+            }
+            else
+            {
+                return _database.InsertAsync(listp);
+            }
+        }
+        public Task<List<Service>> GetListServicesAsync(int salonlistid)
+        {
+            return _database.QueryAsync<Service>(
+            "select P.ID, P.Description from Service P"
+            + " inner join ListService LP"
+            + " on P.ID = LP.ServiceID where LP.SalonListID = ?",
+            salonlistid);
+        }
+
     }
 }
