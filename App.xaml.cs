@@ -1,8 +1,26 @@
-﻿namespace ProiectMediiMAUI;
+﻿using System;
+using ProiectMediiMAUI.Data;
+using System.IO;
+
+namespace ProiectMediiMAUI;
 
 public partial class App : Application
 {
-	public App()
+    static SalonListDatabase database;
+    public static SalonListDatabase Database
+    {
+        get
+        {
+            if (database == null)
+            {
+                database = new
+                SalonListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+                LocalApplicationData), "SalonList.db3"));
+            }
+            return database;
+        }
+    }
+    public App()
 	{
 		InitializeComponent();
 

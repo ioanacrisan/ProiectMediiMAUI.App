@@ -6,9 +6,16 @@
     xmlns:local="clr-namespace:ProiectMediiMAUI"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
+    <TabBar>
+        <ShellContent
         Title="Lumea saloanelor"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+        <ShellContent
+        Title="Listele saloanelor mele"
+        ContentTemplate="{DataTemplate local:ListEntryPage}"
+            />
+
+    </TabBar>
 </Shell>

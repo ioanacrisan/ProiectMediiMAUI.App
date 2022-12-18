@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProiectMediiMAUI.ListEntryPage"
+             Title="Listele saloanelor">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adauga salon"
+Clicked="OnSalonListAddedClicked" />
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="listView"
+Margin="20"
+ItemSelected="OnListViewItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Description}"
+Detail="{Binding Name}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
