@@ -18,6 +18,7 @@ namespace ProiectMediiMAUI.Data
             _database.CreateTableAsync<SalonList>().Wait();
             _database.CreateTableAsync<Service>().Wait();
             _database.CreateTableAsync<ListService>().Wait();
+            _database.CreateTableAsync<Salon>().Wait();
         }
         public Task<int> SaveServiceAsync(Service service)
         {
@@ -83,6 +84,23 @@ namespace ProiectMediiMAUI.Data
             + " inner join ListService LP"
             + " on P.ID = LP.ServiceID where LP.SalonListID = ?",
             salonlistid);
+        }
+
+
+        public Task<List<Salon>> GetSalonsAsync()
+        {
+            return _database.Table<Salon>().ToListAsync();
+        }
+        public Task<int> SaveSalonAsync(Salon salon)
+        {
+            if (salon.ID != 0)
+            {
+                return _database.UpdateAsync(salon);
+            }
+            else
+            {
+                return _database.InsertAsync(salon);
+            }
         }
 
     }

@@ -17,5 +17,9 @@
         ContentTemplate="{DataTemplate local:ListEntryPage}"
             />
 
+        <ShellContent
+            Title="Saloane existente"
+            ContentTemplate="{DataTemplate local:SalonEntryPage}"/>
+
     </TabBar>
 </Shell>

@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,8 @@ namespace ProiectMediiMAUI.Models
 
         [MaxLength(500), Unique]
         public string Description { get; set; }
+
+        [ForeignKey(typeof(Salon))]
+        public int SalonID { get; set; }
     }
 }

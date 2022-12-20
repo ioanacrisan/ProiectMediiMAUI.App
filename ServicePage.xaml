@@ -23,6 +23,9 @@ Clicked="OnSaveButtonClicked" />
                 <Button Grid.Column="1"
 Text="Delete Product" MaximumWidthRequest="200"
 Clicked="OnDeleteButtonClicked"/>
+                <Button Text="Aratati pe harta" Grid.Column="1"
+MaximumWidthRequest="200"
+Clicked="OnShowMapButtonClicked"></Button>
                 <ListView Grid.Row="1" Grid.Column="0" x:Name="listView"
 Margin="20" IsRefreshing="True" >
                     <ListView.ItemTemplate>

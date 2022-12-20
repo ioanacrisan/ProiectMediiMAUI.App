@@ -21,6 +21,8 @@ public partial class ListPage : ContentPage
     async void OnSaveButtonClicked(object sender, EventArgs e)
     {
         var slist = (SalonList)BindingContext;
+        Salon selectedSalon = (SalonPicker.SelectedItem as Salon);
+        slist.SalonID = selectedSalon.ID;
         await App.Database.SaveSalonListAsync(slist);
         await Navigation.PopAsync();
     }
@@ -31,16 +33,16 @@ public partial class ListPage : ContentPage
         await Navigation.PopAsync();
     }
 
-    async void OnDeleteServiceButtonClicked(object sender, EventArgs e)
-    {
-        var service = (Service)BindingContext;
-        await App.Database.DeleteServiceAsync(service);
-        listView.ItemsSource = await App.Database.GetServicesAsync();
-    }
+
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+
+        var items = await App.Database.GetSalonsAsync();
+        SalonPicker.ItemsSource = (System.Collections.IList)items;
+        SalonPicker.ItemDisplayBinding = new Binding("SalonDetails");
+
         var shopl = (SalonList)BindingContext;
         listView.ItemsSource = await App.Database.GetListServicesAsync(shopl.ID);
     }

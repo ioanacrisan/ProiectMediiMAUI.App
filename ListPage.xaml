@@ -12,7 +12,7 @@ HeightRequest="50" >
                 <local:ValidationBehaviour />
             </Editor.Behaviors>
             </Editor>
-        
+            <Picker x:Name="SalonPicker" Title="Adaugati numele salonului"/>
             <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

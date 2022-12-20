@@ -44,4 +44,18 @@ public partial class ServicePage : ContentPage
         base.OnAppearing();
         listView.ItemsSource = await App.Database.GetServicesAsync();
     }
+
+    async void OnShowMapButtonClicked(object sender, EventArgs e)
+    {
+        var salon = (Salon)BindingContext;
+        var address = salon.Adress;
+        var locations = await Geocoding.GetLocationsAsync(address);
+        var options = new MapLaunchOptions
+        {
+            Name = "Salonul meu preferat" };
+        var location = locations?.FirstOrDefault();
+        // var myLocation = await Geolocation.GetLocationAsync();
+        var myLocation = new Location(46.7731796289, 23.6213886738);
+        await Map.OpenAsync(location, options);
+    }
 }
