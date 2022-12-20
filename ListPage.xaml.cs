@@ -43,7 +43,7 @@ public partial class ListPage : ContentPage
         SalonPicker.ItemsSource = (System.Collections.IList)items;
         SalonPicker.ItemDisplayBinding = new Binding("SalonDetails");
 
-        var shopl = (SalonList)BindingContext;
-        listView.ItemsSource = await App.Database.GetListServicesAsync(shopl.ID);
+        var salonl = (SalonList)BindingContext;
+        listView.ItemsSource = await App.Database.GetListServicesAsync(salonl.ID);
     }
 }
