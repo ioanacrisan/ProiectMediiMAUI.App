@@ -13,7 +13,7 @@
         Route="MainPage" />
 
         <ShellContent
-        Title="Listele saloanelor mele"
+        Title="Listele serviciilor mele"
         ContentTemplate="{DataTemplate local:ListEntryPage}"
             />
 

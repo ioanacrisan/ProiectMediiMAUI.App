@@ -18,10 +18,10 @@ HeightRequest="50" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Text="Save Product" MaximumWidthRequest="200"
+                <Button Text="Save Service" MaximumWidthRequest="200"
 Clicked="OnSaveButtonClicked" />
                 <Button Grid.Column="1"
-Text="Delete Product" MaximumWidthRequest="200"
+Text="Delete Service" MaximumWidthRequest="200"
 Clicked="OnDeleteButtonClicked"/>
                 <Button Text="Aratati pe harta" Grid.Column="1"
 MaximumWidthRequest="200"
@@ -35,7 +35,7 @@ Margin="20" IsRefreshing="True" >
                     </ListView.ItemTemplate>
                 </ListView>
                 
-                <Button Grid.Row="2" Grid.Column="0" Text="Adaugati la lista saloanelor"
+                <Button Grid.Row="2" Grid.Column="0" Text="Adaugati la lista programarilor"
 MaximumWidthRequest="200" Clicked="OnAddButtonClicked" />
             </Grid>
         </StackLayout>
